@@ -9,10 +9,16 @@ const PORTRAIT: Photo = {
 };
 
 const PROOFS = [
-  { href: '#pendidikan', key: '3,59', title: 'IPK, Cum Laude', text: 'S1 Informatika' },
   { href: '#sinta-3-research', key: '18.869', title: 'ulasan diteliti', text: 'Terbit di jurnal BITS, 2026' },
-  { href: '#bappeda', key: 'BAPPEDA', title: 'Provinsi Lampung', text: 'Magang administrasi dan publikasi' },
-  { href: '#kreatif-juara', key: 'Juara 1', title: 'Animasi 2D/3D', text: 'Academic Expo 2025, karya tim' },
+  { href: '#github-showcase', key: 'Otomasi', title: 'Autofill MagangHub', text: 'Ekstensi pengisi formulir' },
+  { href: '#karya-affiliate', key: 'Naskah AI', title: 'Affiliate Script Studio', text: 'Naskah dari tautan produk' },
+  { href: '#karya-adhebank', key: 'Android', title: 'Adhebank', text: 'Aplikasi catatan keuangan' },
+  { href: '#pkm', key: '60+ siswa', title: 'Game Jelajah Quiz', text: 'Edukasi sekolah dasar' },
+  { href: '#kreatif-juara', key: 'Juara 1', title: 'Animasi 2D/3D', text: 'Karya tim, Expo 2025' },
+  { href: '#kreatif-juara', key: 'Juara 3', title: 'Teknokrat Portal AR', text: 'Karya tim, Expo 2025' },
+  { href: '#branding', key: 'Finalis', title: 'Muli Mekhanai', text: 'Duta wisata Pesawaran' },
+  { href: '#branding', key: 'Finalis', title: 'Brand Ambassador', text: 'Jaya Bakery 2023, 15 besar' },
+  { href: '#pendidikan', key: '3,59', title: 'IPK, Cum Laude', text: 'S1 Informatika' },
 ];
 
 export function HeroSection() {
@@ -45,7 +51,7 @@ export function HeroSection() {
       </div>
       <div className="wrap proofs">
         {PROOFS.map(({ href, key, title, text }) => (
-          <a key={href} href={href} className="proof">
+          <a key={title} href={href} className="proof">
             <span className="proof-key">{key}</span>
             <span><strong>{title}</strong><span className="meta block">{text}</span></span>
           </a>
