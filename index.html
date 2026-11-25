@@ -1,19 +1,35 @@
 <!doctype html>
-<html lang="id" class="scroll-smooth">
+<html lang="id">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PORTFOLIO // M. Adhe Akbar, S.Kom.</title>
-    <meta name="description" content="Portfolio Web M. Adhe Akbar, S.Kom. — S1 Informatika Cum Laude, Teknisi Jaringan BNSP KKNI II, On-Camera Talent, & Full-Stack Developer." />
-    
-    <!-- Google Fonts: Plus Jakarta Sans, Syne, Playfair Display (Italic), Caveat, JetBrains Mono -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Syne:wght@600;700;800;900&display=swap" rel="stylesheet">
+    <script>
+      // Section di luar layar ditata belakangan; sebelum navigasi semuanya ditata supaya posisi anchor tepat.
+      (function () {
+        var full = function () { document.documentElement.classList.add('full-layout'); };
+        if (location.hash) full();
+        addEventListener('pointerdown', full, { once: true, capture: true, passive: true });
+        addEventListener('keydown', full, { once: true, capture: true });
+      })();
+    </script>
+    <title>M. Adhe Akbar, S.Kom. | Portofolio</title>
+    <meta name="description" content="Portofolio M. Adhe Akbar, S.Kom., Sarjana Informatika dari Bandar Lampung: pengembangan aplikasi, pengolahan data, administrasi, dukungan IT, dan publikasi." />
+    <meta name="theme-color" content="#ffffff" />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <meta property="og:type" content="profile" />
+    <meta property="og:locale" content="id_ID" />
+    <meta property="og:title" content="M. Adhe Akbar, S.Kom. | Portofolio" />
+    <meta property="og:description" content="Pengembangan aplikasi, penelitian, administrasi, dukungan IT, dan publikasi." />
+    <meta name="twitter:card" content="summary" />
+    <!-- og:url, og:image, dan canonical menunggu domain final. -->
+    <link rel="preload" href="/src/fonts/plus-jakarta-sans-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" as="image" type="image/webp" href="./assets/opt/potret-lepas-720.webp" imagesrcset="./assets/opt/potret-lepas-420.webp 420w, ./assets/opt/potret-lepas-560.webp 560w, ./assets/opt/potret-lepas-720.webp 720w, ./assets/opt/potret-lepas-960.webp 960w" imagesizes="(min-width: 60rem) 34rem, min(31rem, calc(100vw - 2.5rem))" fetchpriority="high" />
   </head>
-  <body class="bg-[#F5F6F8] text-[#0F172A] selection:bg-neutral-900 selection:text-white antialiased overflow-x-hidden">
+  <body>
     <div id="root"></div>
+    <noscript>
+      <p style="padding: 2rem">Beberapa tombol memerlukan JavaScript. CV tetap bisa dibuka di <a href="assets/CV_M_Adhe_Akbar_ATS.pdf">CV M. Adhe Akbar (PDF)</a>.</p>
+    </noscript>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

@@ -1,458 +1,182 @@
-import React, { useState } from 'react';
-import confetti from 'canvas-confetti';
-import { PORTFOLIO_DATA, GithubProject, GITHUB_ARCHIVE } from '../data/portfolioData';
-import { useInView } from '../hooks/useInView';
-import { playTactileClick, playCelebrationChime } from '../utils/soundEffects';
-import { 
-  Code2, 
-  ArrowUpRight, 
-  Terminal, 
-  Smartphone, 
-  Globe, 
-  TrendingUp, 
-  CheckCircle2,
-  FolderGit2,
-  ShieldCheck,
-  Gamepad2,
-  Star,
-  Play,
-  Hash
-} from 'lucide-react';
+import { useRef, useState, type RefObject } from 'react';
+import { Check, ChevronDown, RotateCcw } from 'lucide-react';
+import { CONTACT, EVIDENCE, OTHER_PROJECTS, REPO_KINDS, REPO_SNAPSHOT_DATE, REPOS, repoUrl, type RepoKind } from '../data/portfolioData';
+import { EvidenceButton, idx, OutLink, replay, Section, Tech } from '../lib/ui';
 
-const GithubIcon: React.FC<{ className?: string }> = ({ className = "w-4 h-4" }) => (
-  <svg 
-    className={className} 
-    fill="currentColor" 
-    viewBox="0 0 24 24"
-  >
-    <path 
-      fillRule="evenodd" 
-      clipRule="evenodd" 
-      d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" 
-    />
-  </svg>
+const FLOW = [
+  ['Unggah dokumen', 'Sertifikat atau CV dalam format PDF maupun gambar.'],
+  ['Pembacaan isi', 'Teks diekstraksi, termasuk dari dokumen hasil pindai dengan bantuan AI.'],
+  ['Pengisian kolom', 'Data ditempatkan sesuai konteks kolom pada formulir.'],
+  ['Pemeriksaan pengguna', 'Hijau menandai data yang yakin, kuning perlu diperiksa. Pengiriman tetap dilakukan pengguna.'],
+];
+
+// Posisi kolom pada gambar halaman uji, dalam persen.
+const FIELDS = [
+  { top: '20.6%', left: '18.5%', width: '63.5%', height: '4.4%', ok: true },
+  { top: '29.7%', left: '18.5%', width: '46%', height: '4.4%', ok: true },
+  { top: '41.6%', left: '18.5%', width: '46%', height: '4.4%', ok: true },
+  { top: '55.6%', left: '18.5%', width: '31%', height: '4.4%', ok: false },
+  { top: '69.6%', left: '18.5%', width: '31%', height: '4.4%', ok: false },
+];
+
+const Replay = ({ target }: { target: RefObject<HTMLElement | null> }) => (
+  <button type="button" className="link motion-reduce:hidden" onClick={() => target.current && replay(target.current)}>Putar ulang <RotateCcw aria-hidden="true" /></button>
 );
 
-export const GithubShowcaseSection: React.FC = () => {
-  const { ref: sectionRef, isInView } = useInView({ threshold: 0.1 });
-  const { githubProjects } = PORTFOLIO_DATA;
-  const [filterCategory, setFilterCategory] = useState<string>('ALL');
-  
-  // Interactive Terminal State
-  const [activeCommand, setActiveCommand] = useState<string>('git log -n 1 --stat');
-  const [terminalOutput, setTerminalOutput] = useState<string>(
-    'commit 8f3c1a9 (HEAD -> main)\nAuthor: M. Adhe Akbar <adhe.akbar@teknokrat.ac.id>\nDate:   2026-03-24\n\n    feat: integrate MV3 autofill engine & SINTA 3 benchmark\n 6 repos active, 100% test coverage verified.'
-  );
+const PIPE = ['Tautan produk', 'Riset fakta', 'Hook', 'Naskah', 'Teleprompter'];
+const SCENES = [
+  ['Hook', 'Pembuka yang menarik perhatian'],
+  ['Masalah', 'Kebutuhan yang dialami penonton'],
+  ['Bukti', 'Fakta produk yang bersumber'],
+  ['Ajakan', 'Arahan sesuai platform'],
+];
+const GATES = ['Klaim ditautkan pada fakta produk', 'Pembuka dibatasi maksimal 3,5 detik', 'Frasa terlarang ditolak otomatis'];
 
-  // Star reaction counters
-  const [starCounts, setStarCounts] = useState<{ [key: string]: number }>({
-    'adhebank': 0,
-    'ella-makeup': 0,
-    'autofill-maganghub': 0,
-    'penakluk-code': 0,
-    'adhemology': 0
-  });
+const KIND_LABEL = Object.fromEntries(REPO_KINDS.map(({ id, label }) => [id, label])) as Record<RepoKind, string>;
+const FILTERS: { id: RepoKind | 'semua'; label: string; count: number }[] = [
+  { id: 'semua', label: 'Semua', count: REPOS.length },
+  ...REPO_KINDS.map(({ id, label }) => ({ id, label, count: REPOS.filter((r) => r.kind === id).length })),
+];
 
-  const handleStarClick = (repoId: string) => {
-    playCelebrationChime();
-    setStarCounts(prev => ({
-      ...prev,
-      [repoId]: (prev[repoId] || 0) + 1
-    }));
-  };
+function CodeLink({ name, title }: { name: string; title: string }) {
+  const url = repoUrl(name);
+  return url ? <OutLink href={url} label={`Lihat kode sumber ${title} di GitHub`}>Lihat kode sumber</OutLink> : <p className="meta py-2">Kode sumber sedang dalam perapian.</p>;
+}
 
-  const triggerRepoConfetti = (e: React.MouseEvent) => {
-    playCelebrationChime();
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = (rect.left + rect.width / 2) / window.innerWidth;
-    const y = (rect.top + rect.height / 2) / window.innerHeight;
-
-    confetti({
-      particleCount: 45,
-      spread: 60,
-      origin: { x, y },
-      colors: ['#10B981', '#2563EB', '#F59E0B', '#8B5CF6']
-    });
-  };
-
-  const runCliCommand = (cmd: string, output: string) => {
-    playTactileClick(1200);
-    setActiveCommand(cmd);
-    setTerminalOutput(output);
-  };
-
-  const categories = [
-    { id: 'ALL', label: 'SEMUA PROYEK (6)', icon: <FolderGit2 className="w-3.5 h-3.5" /> },
-    { id: 'FINANCE_APP', label: 'FINANCE WEB (1)', icon: <TrendingUp className="w-3.5 h-3.5 text-purple-600" /> },
-    { id: 'WEB_FULLSTACK', label: 'NEXT.JS FULLSTACK (1)', icon: <Globe className="w-3.5 h-3.5 text-sky-600" /> },
-    { id: 'SECURITY', label: 'SECURITY PORTAL (1)', icon: <ShieldCheck className="w-3.5 h-3.5 text-rose-600" /> },
-    { id: 'MOBILE_ANDROID', label: 'ANDROID KOTLIN (1)', icon: <Smartphone className="w-3.5 h-3.5 text-emerald-600" /> },
-    { id: 'BROWSER_EXTENSION', label: 'BROWSER TOOLING (1)', icon: <Terminal className="w-3.5 h-3.5 text-amber-600" /> },
-    { id: 'GAME', label: 'GAME EDUKASI (1)', icon: <Gamepad2 className="w-3.5 h-3.5 text-indigo-600" /> },
-  ];
-
-  const filteredProjects = filterCategory === 'ALL'
-    ? githubProjects
-    : githubProjects.filter((p) => p.category === filterCategory);
-
-  const getCategoryIcon = (cat: string) => {
-    switch (cat) {
-      case 'MOBILE_ANDROID': return <Smartphone className="w-4 h-4 text-emerald-600" />;
-      case 'BROWSER_EXTENSION': return <Terminal className="w-4 h-4 text-amber-600" />;
-      case 'WEB_FULLSTACK': return <Globe className="w-4 h-4 text-sky-600" />;
-      case 'FINANCE_APP': return <TrendingUp className="w-4 h-4 text-purple-600" />;
-      case 'SECURITY': return <ShieldCheck className="w-4 h-4 text-rose-600" />;
-      case 'GAME': return <Gamepad2 className="w-4 h-4 text-indigo-600" />;
-      default: return <Code2 className="w-4 h-4 text-slate-800" />;
-    }
-  };
-
+function RepoArchive() {
+  const [filter, setFilter] = useState<RepoKind | 'semua'>('semua');
+  const [opened, setOpened] = useState(false);
+  const shown = filter === 'semua' ? REPOS : REPOS.filter((r) => r.kind === filter);
   return (
-    <section 
-      ref={sectionRef}
-      id="github-showcase" 
-      className="py-16 md:py-24 px-4 md:px-8 xl:pr-28 border-b border-black/[0.06] relative bg-[#FFFFFF] figma-dot-grid overflow-hidden select-none scroll-mt-20 md:scroll-mt-24"
-    >
-      <div className="max-w-7xl mx-auto relative">
-        
-        {/* Figma Canvas Frame Bar Header */}
-        <div className="flex items-center justify-between px-4 py-2.5 mb-6 bg-slate-50/90 backdrop-blur-md rounded-2xl border border-slate-200/90 shadow-2xs text-xs font-mono text-slate-600">
-          <div className="flex items-center gap-2">
-            <span className="flex items-center gap-1 font-bold text-slate-800">
-              <Hash className="w-3.5 h-3.5 text-blue-600" />
-              Repositori Kode // Proyek Open-Source GitHub
-            </span>
-            <span className="text-slate-400">|</span>
-            <span className="text-slate-500 hidden sm:inline">Akun GitHub: github.com/AdheAkbar</span>
-          </div>
-
-          {/* Docked Multiplayer Collaborator (Figma Real-Time Style - Zero Overlap) */}
-          <div className="flex items-center gap-2">
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 font-bold text-[11px] border border-emerald-200 shadow-2xs">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-              MVVM &amp; Clean Architecture
-            </span>
-          </div>
-        </div>
-
-        {/* Section Header with Clean Stacked Right Column */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-8 relative">
-          <div className="max-w-2xl">
-            <div className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-100 border border-slate-200 text-xs font-mono text-slate-800 mb-3 shadow-xs transition-all ${
-              isInView ? 'animate-badge-pop' : ''
-            }`}>
-              <Code2 className="w-3.5 h-3.5 text-blue-600" />
-              <span>KARYA PEMROGRAMAN &amp; KODE GITHUB</span>
-            </div>
-
-            <h2 className={`text-3xl sm:text-4xl md:text-5xl font-heading font-extrabold text-[#0B1E3D] tracking-tight transition-all ${
-              isInView ? 'animate-reveal-up' : ''
-            }`}>
-              Karya Pemrograman &amp; <span className="text-blue-700">Proyek Aplikasi</span>
-            </h2>
-
-            <p className={`font-serif-italic text-lg sm:text-xl text-blue-700 mt-1 mb-2 font-normal transition-all ${
-              isInView ? 'animate-reveal-up delay-150' : ''
-            }`}>
-              6 Proyek Pilihan dari 26 Repositori Publik di GitHub: Finance, Web, Security, Android & Game
-            </p>
-
-            <p className={`text-slate-600 text-xs sm:text-sm font-sans leading-relaxed transition-all ${
-              isInView ? 'animate-reveal-up delay-250' : ''
-            }`}>
-              Bagian ini menampilkan karya pemrograman dan aplikasi nyata yang telah saya bangun dan publikasikan di GitHub. Anda dapat melihat langsung struktur kode, rancangan antarmuka, dan dokumentasi teknisnya.
-            </p>
-          </div>
-
-          {/* Right Column: Tactile Sticky Note + GitHub Profile Button (Zero Overlap) */}
-          <div className="flex flex-col sm:flex-row lg:flex-col items-start sm:items-center lg:items-end gap-3 shrink-0">
-            {/* Tactile Sticky Note (GitHub Developer Note) */}
-            <div 
-              onClick={triggerRepoConfetti}
-              className="cursor-pointer hover:scale-105 transition-transform"
-              title="Klik catatan developer untuk selebrasi!"
-            >
-              <div className="relative">
-                <div className="washi-tape-top washi-tape-green bg-[#DCFCE7] text-emerald-950 px-4 py-2.5 rounded-xl shadow-md border border-emerald-300/80 max-w-[270px] -rotate-1 hover:rotate-0 transition-transform">
-                  <div className="text-[10px] font-mono uppercase tracking-wider text-emerald-800 font-bold mb-0.5">
-                    🛠️ Catatan Developer:
-                  </div>
-                  <p className="font-handwriting text-sm leading-snug">
-                    "Ekstensi browser autofill MV3 dirancang untuk memudahkan pengisian data form kompleks secara otomatis!"
-                  </p>
-                  <div className="text-[10px] font-sans text-emerald-700 font-semibold mt-0.5 text-right">
-                    — M. Adhe Akbar (Open Source)
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <a
-              href="https://github.com/AdheAkbar"
-              target="_blank"
-              rel="noreferrer"
-              onClick={() => playTactileClick(1400)}
-              className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-2xl bg-[#0B1E3D] hover:bg-blue-600 text-white font-mono text-xs transition-all shadow-md group shrink-0 card-3d-tilt click-pop ${
-                isInView ? 'animate-cascade delay-200' : ''
-              }`}
-            >
-              <GithubIcon className="w-4 h-4 text-white" />
-              <span className="font-bold">github.com/AdheAkbar</span>
-              <ArrowUpRight className="w-3.5 h-3.5 text-slate-300 group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-            </a>
-          </div>
-        </div>
-
-        {/* Interactive CLI Git Terminal Sandbox */}
-        <div className={`mb-10 rounded-2xl bg-[#0F172A] border border-slate-800 p-4 sm:p-5 text-slate-200 font-mono text-xs shadow-xl card-3d-tilt transition-all ${
-          isInView ? 'animate-cascade delay-200' : ''
-        }`}>
-          <div className="flex items-center justify-between pb-3 border-b border-slate-800/80 mb-3">
-            <div className="flex items-center gap-2">
-              <span className="w-3 h-3 rounded-full bg-rose-500/80" />
-              <span className="w-3 h-3 rounded-full bg-amber-500/80" />
-              <span className="w-3 h-3 rounded-full bg-emerald-500/80" />
-              <span className="text-[11px] text-slate-400 font-bold ml-2">adheakbar@macbook-pro: ~/workspace/repos</span>
-            </div>
-            <div className="text-[10px] text-emerald-400 font-bold flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
-              <span>TERMINAL LIVE</span>
-            </div>
-          </div>
-
-          {/* Quick CLI Buttons */}
-          <div className="flex flex-wrap items-center gap-2 mb-3">
-            <span className="text-[10px] text-slate-400 uppercase tracking-wider font-semibold">KLIK PERINTAH:</span>
-            <button
-              onClick={() => runCliCommand(
-                'git log -n 1 --stat',
-                'commit 8f3c1a9 (HEAD -> main)\nAuthor: M. Adhe Akbar <adhe.akbar@teknokrat.ac.id>\nDate:   2026-03-24\n\n    feat: integrate MV3 autofill engine & SINTA 3 benchmark\n 6 repos active, 100% test coverage verified.'
-              )}
-              className={`px-2.5 py-1 rounded-md text-[11px] cursor-pointer click-pop transition-all ${
-                activeCommand.includes('git log')
-                  ? 'bg-blue-600 text-white font-bold'
-                  : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
-              }`}
-            >
-              $ git log -n 1
-            </button>
-            <button
-              onClick={() => runCliCommand(
-                'cat stack.config.json',
-                '{\n  "android": "Kotlin 2.0 + Jetpack Compose + MVVM",\n  "web": "Next.js 14 + TypeScript + Tailwind CSS",\n  "browser": "Chrome Extension Manifest V3",\n  "ai": "Python 3.12 + Scikit-Learn + NLTK (SINTA 3)"\n}'
-              )}
-              className={`px-2.5 py-1 rounded-md text-[11px] cursor-pointer click-pop transition-all ${
-                activeCommand.includes('cat stack')
-                  ? 'bg-blue-600 text-white font-bold'
-                  : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
-              }`}
-            >
-              $ cat stack.config.json
-            </button>
-            <button
-              onClick={() => runCliCommand(
-                'npm run test:architecture',
-                'PASS test/autofill_mv3.spec.ts (12/12 passing)\nPASS test/clean_architecture_mvvm.spec.kt (8/8 passing)\n\nTest Suites: 2 passed, 2 total\nSnapshots:   0 total\nTime:        0.842 s'
-              )}
-              className={`px-2.5 py-1 rounded-md text-[11px] cursor-pointer click-pop transition-all ${
-                activeCommand.includes('npm run')
-                  ? 'bg-blue-600 text-white font-bold'
-                  : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
-              }`}
-            >
-              $ npm run test:architecture
-            </button>
-          </div>
-
-          <div className="bg-[#0B1120] p-3 rounded-xl border border-slate-800/80 font-mono text-[11px] text-emerald-400 whitespace-pre-wrap leading-relaxed">
-            <span className="text-slate-400">$ {activeCommand}</span>
-            {'\n'}{terminalOutput}
-          </div>
-        </div>
-
-        {/* Category Filter Tabs */}
-        <div className={`flex flex-wrap gap-2.5 mb-8 border-b border-slate-200 pb-4 transition-all ${
-          isInView ? 'animate-reveal-up delay-250' : ''
-        }`}>
-          {categories.map((c) => {
-            const isSelected = filterCategory === c.id;
+    <details className="fold" ref={(el) => { if (el?.open) setOpened(true); }} onToggle={() => setOpened(true)}>
+      <summary><span>Arsip proyek GitHub ({REPOS.length})</span><ChevronDown size={20} aria-hidden="true" /></summary>
+      <p className="meta mt-4 max-w-[68ch]">Data per {REPO_SNAPSHOT_DATE}. CV mencatat 26 repositori karena disusun lebih awal. Daftar ini mencakup latihan dan turunan karya pihak ketiga.</p>
+      <div role="group" aria-label="Saring repositori" className="mt-4 flex flex-wrap gap-2">
+        {FILTERS.map(({ id, label, count }) => (
+          <button key={id} type="button" className="chip" aria-pressed={filter === id} onClick={() => setFilter(id)}>{label} ({count})</button>
+        ))}
+      </div>
+      <p role="status" className="sr-only">{shown.length} repositori ditampilkan</p>
+      {/* Tinggi tetap agar mengganti saringan tidak menggeser halaman. */}
+      <div className="mt-4 h-[26rem] overflow-y-auto pr-2" tabIndex={0} role="group" aria-label="Daftar repositori">
+        <ul className="divide-y divide-hair">
+          {opened && shown.map(({ name, kind, language, pushed, description }) => {
+            const url = repoUrl(name);
             return (
-              <button
-                key={c.id}
-                onClick={() => {
-                  playTactileClick(1100);
-                  setFilterCategory(c.id);
-                }}
-                className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-mono font-semibold transition-all cursor-pointer click-pop ${
-                  isSelected
-                    ? 'bg-[#0B1E3D] text-white shadow-sm'
-                    : 'bg-white text-slate-600 border border-slate-200 hover:text-black hover:bg-slate-100'
-                }`}
-              >
-                {c.icon}
-                <span>{c.label}</span>
-              </button>
+              <li key={name} className="grid gap-x-6 py-2 md:grid-cols-[minmax(0,15rem)_1fr_auto] md:items-center">
+                {url ? <OutLink href={url}>{name}</OutLink> : <span className="py-2.5 font-bold">{name}</span>}
+                <span className="meta">{description}</span>
+                <span className="text-sm text-fog md:text-right">{[KIND_LABEL[kind], language, pushed].filter(Boolean).join(', ')}</span>
+              </li>
             );
           })}
-        </div>
-
-        {/* Repository Cards Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          {filteredProjects.map((proj: GithubProject, pIdx: number) => (
-            <div
-              key={proj.id}
-              className={`bg-[#F8FAFC] rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm hover:border-blue-400 hover:shadow-md transition-all duration-300 flex flex-col justify-between card-3d-tilt ${
-                isInView ? `animate-cascade delay-${(pIdx + 1) * 100}` : ''
-              }`}
-            >
-              <div>
-                {/* Header Meta: Category & Star Reaction */}
-                <div className="flex items-center justify-between gap-2 mb-4">
-                  <div className="flex items-center gap-2">
-                    <div className="p-2 rounded-xl bg-white border border-slate-200 shadow-2xs">
-                      {getCategoryIcon(proj.category)}
-                    </div>
-                    <span className="text-[11px] font-mono tracking-wider text-slate-600 uppercase font-bold">
-                      {proj.category.replace('_', ' ')}
-                    </span>
-                  </div>
-
-                  <div className="flex items-center gap-2">
-                    <button
-                      onClick={() => handleStarClick(proj.id)}
-                      className="px-2.5 py-1 rounded-full text-xs font-mono font-bold bg-white border border-slate-200 text-amber-600 flex items-center gap-1 shadow-2xs cursor-pointer click-pop hover:border-amber-400 transition-colors"
-                      title="Klik untuk memberi Star!"
-                    >
-                      <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-500" />
-                      <span>{starCounts[proj.id] || 0}</span>
-                    </button>
-                    <span className="px-3 py-1 rounded-full text-[10px] font-mono font-bold bg-[#0B1E3D] text-white">
-                      {proj.badge}
-                    </span>
-                  </div>
-                </div>
-
-                {/* Repo Title */}
-                <h3 className="text-xl sm:text-2xl font-heading font-extrabold text-[#0B1E3D] mb-1">
-                  {proj.name}
-                </h3>
-                <div className="text-xs font-mono text-blue-700 font-semibold mb-4">
-                  {proj.title}
-                </div>
-
-                {/* Description */}
-                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-sans mb-6">
-                  {proj.description}
-                </p>
-
-                {/* Engineering Highlights */}
-                <div className="space-y-2 mb-6 bg-white p-4 rounded-2xl border border-slate-200 shadow-2xs">
-                  <div className="text-[10px] font-mono text-slate-500 uppercase tracking-wider mb-2 flex items-center gap-1.5 font-bold">
-                    <Terminal className="w-3 h-3 text-[#0B1E3D]" /> ARSITEKTUR & IMPLEMENTASI KUNCI:
-                  </div>
-                  {proj.highlights.map((hl: string, hIdx: number) => (
-                    <div key={hIdx} className="flex items-start gap-2 text-xs text-slate-700 font-sans">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
-                      <span>{hl}</span>
-                    </div>
-                  ))}
-                </div>
-
-                {/* Tech Stack Pills */}
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {proj.techStack.map((tech: string, tIdx: number) => (
-                    <span
-                      key={tIdx}
-                      className="px-2.5 py-1 rounded-xl bg-white border border-slate-200 text-slate-700 text-[11px] font-mono shadow-2xs"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              {/* Action Buttons */}
-              <div className="pt-4 border-t border-slate-200 flex items-center justify-between gap-4">
-                <a
-                  href={proj.githubUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  onClick={() => playTactileClick(1300)}
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#0B1E3D] text-white hover:bg-blue-600 text-xs font-sans font-bold shadow-xs transition-all cursor-pointer click-pop"
-                >
-                  <GithubIcon className="w-3.5 h-3.5" />
-                  <span>Kunjungi Repositori</span>
-                  <ArrowUpRight className="w-3.5 h-3.5" />
-                </a>
-
-                <span className="text-[11px] font-mono text-slate-400 hidden sm:inline font-semibold">
-                  OPEN SOURCE MIT
-                </span>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* ARSIP LENGKAP: Seluruh 26 Repositori Publik */}
-        <div className="mt-10 bg-slate-50/80 rounded-3xl border border-slate-200 p-5 sm:p-7">
-          <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
-            <div>
-              <div className="text-[11px] font-mono font-bold text-slate-500 uppercase tracking-widest mb-1">
-                Arsip Lengkap
-              </div>
-              <h3 className="text-lg sm:text-xl font-heading font-extrabold text-[#0B1E3D]">
-                Semua {GITHUB_ARCHIVE.length} Repositori Publik di GitHub
-              </h3>
-            </div>
-            <a
-              href="https://github.com/AdheAkbar?tab=repositories"
-              target="_blank"
-              rel="noreferrer"
-              onClick={() => playTactileClick(1200)}
-              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-white border border-slate-200 text-[11px] font-mono font-bold text-slate-700 hover:border-blue-400 hover:text-blue-700 transition-colors"
-            >
-              <GithubIcon className="w-3.5 h-3.5" />
-              <span>Buka Profil GitHub</span>
-            </a>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5">
-            {GITHUB_ARCHIVE.map((repo) => (
-              <a
-                key={repo.name}
-                href={repo.url}
-                target="_blank"
-                rel="noreferrer"
-                onClick={() => playTactileClick(1150)}
-                className={`group flex items-start gap-3 p-3 rounded-2xl border bg-white transition-all hover:shadow-xs hover:-translate-y-0.5 ${
-                  repo.featured ? 'border-blue-300 hover:border-blue-500' : 'border-slate-200 hover:border-slate-400'
-                }`}
-              >
-                <div className={`shrink-0 mt-0.5 w-1.5 h-1.5 rounded-full ${repo.featured ? 'bg-blue-600' : 'bg-slate-300'}`} />
-                <div className="min-w-0 flex-1">
-                  <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5">
-                    <span className="text-xs font-heading font-extrabold text-[#0B1E3D] group-hover:text-blue-700 truncate">
-                      {repo.name}
-                    </span>
-                    {repo.featured && (
-                      <span className="px-1.5 py-0.5 rounded-md bg-blue-50 border border-blue-200 text-[9px] font-mono font-bold text-blue-700">
-                        UNGGULAN
-                      </span>
-                    )}
-                  </div>
-                  <p className="text-[11px] text-slate-500 font-sans leading-snug mt-0.5 line-clamp-2">
-                    {repo.description}
-                  </p>
-                  <span className="text-[9.5px] font-mono text-slate-400 mt-1 block">
-                    {repo.language} · diubah {repo.pushed}
-                  </span>
-                </div>
-              </a>
-            ))}
-          </div>
-        </div>
-
+        </ul>
       </div>
-    </section>
+    </details>
   );
-};
+}
+
+export function GithubShowcaseSection() {
+  const story = useRef<HTMLDivElement>(null);
+  const studio = useRef<HTMLElement>(null);
+  return (
+    <Section id="github-showcase" tone="sky" split facts={[['Manfaat', 'Mengurangi pengetikan ulang'], ['Peran', 'Pengembang, proyek pribadi'], ['Kendali', 'Pengguna memeriksa sebelum mengirim']]} title={<>Otomasi pengisian formulir <mark>dari dokumen digital</mark></>} lead="Ekstensi Chrome yang dikembangkan untuk memudahkan pengisian profil MagangHub berdasarkan isi sertifikat atau CV.">
+      <div ref={story} className="story grid items-center gap-x-[min(3.5rem,4vw)] gap-y-12 lg:grid-cols-12" data-reveal="story">
+        <figure className="lg:col-span-7">
+          <div className="relative pb-12 sm:pr-12">
+            <div className="browser">
+              <div className="browser-bar">Formulir uji MagangHub</div>
+              <div className="relative overflow-hidden">
+              <EvidenceButton evidence={EVIDENCE.ekstensiForm} sizes="(min-width: 64rem) 42rem, 92vw" className="zoom-top aspect-[10/9]" />
+              <span className="scan" aria-hidden="true" />
+              {FIELDS.map((f, i) => <span key={i} className={`fld ${f.ok ? 'ok' : 'cek'}`} style={{ ...idx(i), top: f.top, left: f.left, width: f.width, height: f.height }} aria-hidden="true" />)}
+              </div>
+            </div>
+            <div className="side absolute right-0 bottom-0 w-[42%] max-w-[17rem] rotate-2 overflow-hidden rounded-2xl shadow-[0_34px_60px_-28px_rgb(11_30_61/0.7)]">
+              <EvidenceButton evidence={EVIDENCE.ekstensiPanel} sizes="17rem" className="zoom-top" />
+            </div>
+          </div>
+          <figcaption className="flex flex-wrap items-center justify-between gap-x-6">Antarmuka ekstensi dan halaman uji. Sorotan bergerak merupakan ilustrasi alur. <Replay target={story} /></figcaption>
+        </figure>
+        <div className="lg:col-span-5">
+          <ol className="steps">
+            {FLOW.map(([title, text], i) => <li key={title} style={idx(i)}><p className="text-[1.1875rem] leading-snug font-bold">{title}</p><p className="mt-0.5 text-[#3b4a63]">{text}</p></li>)}
+          </ol>
+          <Tech>
+            <p>Proyek pribadi: ekstensi Chrome Manifest V3 dengan Side Panel. PDF.js membaca teks, dan model multimodal dipanggil lewat gateway AI untuk dokumen hasil pindaian. Pemindai membaca judul induk kolom, lalu DataTransfer melampirkan berkas. Waktu pengisian belum pernah diukur.</p>
+          </Tech>
+          <CodeLink name="Autofill_maganghub" title="alat pengisi formulir" />
+        </div>
+      </div>
+
+      <article id="karya-affiliate" ref={studio} className="tile studio" data-reveal="studio">
+        <div>
+          <h3>Affiliate Script Studio</h3>
+          <p className="studio-claim">Dari tautan produk menjadi <mark>naskah video siap rekam</mark></p>
+          <p className="mt-4 text-[1.0625rem] text-[#3b4a63]">Aplikasi penyusun naskah video affiliate untuk TikTok Shop dan Shopee Video. Setiap naskah diperiksa secara otomatis sebelum digunakan.</p>
+          <ul className="mt-6 grid gap-3">
+            {GATES.map((t, i) => <li key={t} className="tick flex items-center gap-3 font-bold" style={idx(i)}><span className="grid size-7 shrink-0 place-items-center rounded-full bg-sun" aria-hidden="true"><Check size={17} strokeWidth={3} /></span>{t}</li>)}
+          </ul>
+          <Tech><p>Proyek pribadi: React, TypeScript, Express, Firebase, dan Zod, dengan model bahasa melalui gateway serta riset web. Kerangka awal dari Google AI Studio. Aplikasi internal untuk satu pengguna yang dijalankan secara lokal. Sebanyak 70 pengujian Vitest lulus pada 24 November 2026.</p></Tech>
+          <CodeLink name="Scripting-affiliate" title="Affiliate Script Studio" />
+        </div>
+        <figure>
+          <ol className="pipe">{PIPE.map((t, i) => <li key={t} style={idx(i)}>{t}</li>)}</ol>
+          <div className="prompter" role="img" aria-label="Ilustrasi teleprompter dengan empat adegan: Hook, Masalah, Bukti, dan Ajakan">
+            <div aria-hidden="true">
+              {SCENES.map(([role, text], i) => <p key={role} style={idx(i)}><b>{role}</b>{text}</p>)}
+              <div className="reel-bar">{SCENES.map(([role], i) => <i key={role} style={idx(i)} />)}<span className="playhead" /></div>
+            </div>
+          </div>
+          <figcaption className="flex flex-wrap items-center justify-between gap-x-6">Ilustrasi alur kerja, bukan tangkapan layar aplikasi. <Replay target={studio} /></figcaption>
+        </figure>
+      </article>
+
+      <div className="mt-6 grid gap-6 lg:grid-cols-12">
+        <article id="karya-adhebank" className="tile grid items-center gap-8 bg-blue text-white sm:grid-cols-[auto_1fr] lg:col-span-7" data-reveal="ledger">
+          <div className="phone text-ink" role="img" aria-label="Ilustrasi susunan Adhebank: dompet, kategori, pemasukan, pengeluaran">
+            <div aria-hidden="true">
+              <p className="pt-1 pb-2 text-lg font-extrabold">Adhebank</p>
+              <div className="flows"><i /><i /><i /><i /><i /><i /></div>
+              {['Dompet', 'Kategori', 'Pemasukan', 'Pengeluaran', 'Transfer'].map((t, i) => <div key={t} className="row" style={idx(i)}><b>{t}</b></div>)}
+              <p className="pt-3 text-[0.8125rem] leading-snug text-fog">Ilustrasi struktur aplikasi</p>
+            </div>
+          </div>
+          <div>
+            <h3>Aplikasi pencatatan keuangan Android</h3>
+            <p className="mt-3 text-[1.0625rem] text-white">Adhebank mencatat pemasukan dan pengeluaran. <b>Saldo diperbarui setiap kali transaksi berubah</b>, dan seluruh data disimpan secara lokal pada perangkat.</p>
+            <div className="[&_.tech>summary]:text-white"><Tech><p className="text-white">Kotlin dan Jetpack Compose, pola MVVM. Layar membaca StateFlow dari ViewModel, data disimpan dengan Room dan Coroutines.</p></Tech></div>
+            <CodeLink name="Adhebank" title="Adhebank" />
+          </div>
+        </article>
+        <article className="tile flex flex-col bg-ink text-white lg:col-span-5" data-reveal="route">
+          <svg viewBox="0 0 400 110" className="route mb-6 w-full" aria-hidden="true">
+            <path className="track" d="M50 40 H350" /><path className="draw" pathLength="1" d="M50 40 H350" />
+            {['Laporan', 'Verifikasi', 'Keputusan'].map((t, i) => <g key={t} className="stop" style={idx(i)} transform={`translate(${50 + i * 150} 40)`}><circle r="20" /><path d="M-8 0 L-2 6 L9 -7" /><text y="52" textAnchor="middle">{t}</text></g>)}
+          </svg>
+          <h3>Portal pelaporan insiden siber</h3>
+          <p className="mt-3 text-[1.0625rem] text-[#d5e0f0]">Pelapor mengisi formulir, <b className="text-white">sistem memverifikasi pengirim</b>, kemudian petugas memeriksa laporan dan menetapkan keputusan.</p>
+          <div className="[&_.tech>summary]:text-white"><Tech><p className="text-[#d5e0f0]">PHP dan MySQL dengan prepared statement, verifikasi reCAPTCHA di server, halaman admin untuk persetujuan, dan pembuatan sertifikat pelapor. Halaman depan masih memerlukan perbaikan sebelum dapat didemonstrasikan.</p></Tech></div>
+          <div className="mt-auto pt-2"><CodeLink name="csirt-incident-portal" title="portal laporan insiden" /></div>
+        </article>
+      </div>
+
+      <div className="mt-12 grid gap-3">
+        <details className="fold">
+          <summary><span>Karya lainnya</span><ChevronDown size={20} aria-hidden="true" /></summary>
+          <ul className="divide-y divide-[#c5d3e8]">
+            {OTHER_PROJECTS.map(({ name, title, kind, stack, detail }) => (
+              <li key={name} className="grid gap-x-10 gap-y-1 py-6 md:grid-cols-[1.1fr_1.9fr_auto]">
+                <div><p className="text-[1.125rem] leading-snug font-bold">{title}</p><p className="meta">{kind}</p></div>
+                <p className="text-[#3b4a63]">{detail} <span className="meta block">{stack}</span></p>
+                <CodeLink name={name} title={title} />
+              </li>
+            ))}
+          </ul>
+        </details>
+        <RepoArchive />
+      </div>
+      <p className="mt-6"><OutLink href={CONTACT.github.url}>Buka profil GitHub</OutLink></p>
+    </Section>
+  );
+}

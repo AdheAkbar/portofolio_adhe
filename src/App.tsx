@@ -1,138 +1,72 @@
-import React, { useState, useEffect } from 'react';
-import { PORTFOLIO_DATA, Certificate } from './data/portfolioData';
-import { Navbar } from './components/Navbar';
-import { SignalCanvas } from './components/SignalCanvas';
-import { RotaryDial } from './components/RotaryDial';
-import { HeroSection } from './components/HeroSection';
-import { QuickSummarySection } from './components/QuickSummarySection';
-import { ProfileSection } from './components/ProfileSection';
-import { CvOverviewSection } from './components/CvOverviewSection';
-import { EducationSection } from './components/EducationSection';
-import { HybridSkillsetSection } from './components/HybridSkillsetSection';
-import { GithubShowcaseSection } from './components/GithubShowcaseSection';
+import { Suspense, useMemo, useRef, useState } from 'react';
+import { flushSync } from 'react-dom';
 import { BappedaExperienceSection } from './components/BappedaExperienceSection';
-import { LitaGlobalSection } from './components/LitaGlobalSection';
-import { FieldOperationsSection } from './components/FieldOperationsSection';
-import { SintaResearchSection } from './components/SintaResearchSection';
-import { MultimediaExpoSection } from './components/MultimediaExpoSection';
-import { PkmCaseStudiesSection } from './components/PkmCaseStudiesSection';
-import { PublicSpeakingBrandingSection } from './components/PublicSpeakingBrandingSection';
 import { CertificateVaultSection } from './components/CertificateVaultSection';
 import { ContactLoopingSection } from './components/ContactLoopingSection';
-import { CertificateModal } from './components/CertificateModal';
 import { CvModal } from './components/CvModal';
-import { playTactileClick } from './utils/soundEffects';
-import { 
-  ArrowRight, 
-  Sparkles, 
-  Radio, 
-  ExternalLink,
-  Code2,
-  Video,
-  Users,
-  Network,
-  Cpu,
-  Trophy,
-  HeartHandshake,
-  Camera,
-  ShieldCheck,
-  Send
-} from 'lucide-react';
+import { CvOverviewSection } from './components/CvOverviewSection';
+import { EducationSection } from './components/EducationSection';
+import { EvidenceModal } from './components/EvidenceModal';
+import { FieldOperationsSection } from './components/FieldOperationsSection';
+import { GithubShowcaseSection } from './components/GithubShowcaseSection';
+import { HeroSection } from './components/HeroSection';
+import { HybridSkillsetSection } from './components/HybridSkillsetSection';
+import { LitaGlobalSection } from './components/LitaGlobalSection';
+import { MultimediaExpoSection } from './components/MultimediaExpoSection';
+import { Navbar } from './components/Navbar';
+import { PkmCaseStudiesSection } from './components/PkmCaseStudiesSection';
+import { ProfileSection } from './components/ProfileSection';
+import { PublicSpeakingBrandingSection } from './components/PublicSpeakingBrandingSection';
+import { QuickSummarySection } from './components/QuickSummarySection';
+import { SintaResearchSection } from './components/SintaResearchSection';
+import type { Evidence } from './data/portfolioData';
+import { useReveal } from './hooks/useReveal';
+import { Ui } from './lib/ui';
 
-export const App: React.FC = () => {
-  const [activeDivision, setActiveDivision] = useState<string>('all');
-  const [selectedCert, setSelectedCert] = useState<Certificate | null>(null);
-  const [isCvModalOpen, setIsCvModalOpen] = useState<boolean>(false);
+export default function App() {
+  const cvRef = useRef<HTMLDialogElement>(null);
+  const evidenceRef = useRef<HTMLDialogElement>(null);
+  const [cvOpened, setCvOpened] = useState(false);
+  const [evidence, setEvidence] = useState<Evidence | null>(null);
 
-  const handleSelectDivision = (id: string) => {
-    setActiveDivision(id);
-  };
+  useReveal();
+
+  const ui = useMemo(() => ({
+    openCv: () => {
+      setCvOpened(true);
+      cvRef.current?.showModal();
+    },
+    openEvidence: (next: Evidence) => {
+      flushSync(() => setEvidence(next)); // isi harus siap sebelum dialog memindahkan fokus
+      evidenceRef.current?.showModal();
+    },
+  }), []);
 
   return (
-    <div className="min-h-screen bg-[#F5F6F8] text-[#0F172A] relative selection:bg-neutral-900 selection:text-white">
-      {/* Dynamic Background Signal Shader / Canvas */}
-      <SignalCanvas activeMode={activeDivision} />
-
-      {/* Persistent Technical Navbar */}
-      <Navbar 
-        activeDivision={activeDivision}
-        onSelectDivision={handleSelectDivision}
-        onOpenCvModal={() => setIsCvModalOpen(true)}
-      />
-
-      {/* Rotary Frequency Dial Nav Sidebar */}
-      <RotaryDial />
-
-      {/* Main Content Modules */}
-      <main className="relative z-10">
-        {/* MODUL 01 // HERO */}
-        <HeroSection 
-          onExploreClick={() => {
-            const el = document.getElementById('cv-lengkap') || document.getElementById('keahlian');
-            if (el) el.scrollIntoView({ behavior: 'smooth' });
-          }}
-          onOpenCvModal={() => setIsCvModalOpen(true)}
-        />
-
-        {/* MODUL 02 // RINGKASAN 10 DETIK */}
-        <QuickSummarySection />
-
-        {/* MODUL 03 // PROFIL PRIBADI */}
-        <ProfileSection onOpenCvModal={() => setIsCvModalOpen(true)} />
-
-        {/* MODUL 04 // EXECUTIVE CV */}
-        <CvOverviewSection onOpenCvModal={() => setIsCvModalOpen(true)} />
-
-        {/* MODUL 04 // PENDIDIKAN */}
-        <EducationSection />
-
-        {/* MODUL 05 // DAFTAR KEAHLIAN */}
-        <HybridSkillsetSection />
-
-        {/* MODUL 05 // GITHUB SOFTWARE SHOWCASE */}
-        <GithubShowcaseSection />
-
-        {/* MODUL 06 // PENGALAMAN BAPPEDA */}
-        <BappedaExperienceSection />
-
-        {/* MODUL 07 // PENGALAMAN LITA GLOBAL */}
-        <LitaGlobalSection />
-
-        {/* MODUL 08 // OPERASI DATA & FIBER OPTIC */}
-        <FieldOperationsSection />
-
-        {/* MODUL 09 // RISET ILMIAH SINTA 3 */}
-        <SintaResearchSection />
-
-        {/* MODUL 10 // MULTIMEDIA & PRESTASI EXPO */}
-        <MultimediaExpoSection onOpenCertModal={(cert) => setSelectedCert(cert)} />
-
-        {/* MODUL 11 // PENGABDIAN MASYARAKAT */}
-        <PkmCaseStudiesSection />
-
-        {/* MODUL 12 // KOMUNIKASI PUBLIK & DUTA */}
-        <PublicSpeakingBrandingSection />
-
-        {/* MODUL 13 // SERTIFIKASI & LISENSI RESMI */}
-        <CertificateVaultSection onOpenCertModal={(cert) => setSelectedCert(cert)} />
-
-        {/* MODUL 14 // KONTAK & HUBUNGI SAYA */}
-        <ContactLoopingSection />
+    <Ui value={ui}>
+      <a href="#konten" className="btn btn-ink sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-40">Lewati ke konten</a>
+      <Navbar />
+      <main id="konten" tabIndex={-1} className="outline-none">
+        <HeroSection />
+        {/* Tiap Suspense dihidrasi terpisah supaya thread utama tidak terkunci lama. */}
+        <Suspense><ProfileSection /></Suspense>
+        <Suspense><QuickSummarySection /></Suspense>
+        <Suspense><GithubShowcaseSection /></Suspense>
+        <Suspense><SintaResearchSection /></Suspense>
+        <Suspense><PkmCaseStudiesSection /></Suspense>
+        <Suspense><BappedaExperienceSection /></Suspense>
+        <Suspense><LitaGlobalSection /></Suspense>
+        <Suspense><FieldOperationsSection /></Suspense>
+        <Suspense><HybridSkillsetSection /></Suspense>
+        <Suspense><EducationSection /></Suspense>
+        <Suspense><MultimediaExpoSection /></Suspense>
+        <Suspense><PublicSpeakingBrandingSection /></Suspense>
+        <Suspense><CertificateVaultSection /></Suspense>
+        <Suspense><CvOverviewSection /></Suspense>
+        <Suspense><ContactLoopingSection /></Suspense>
       </main>
-
-      {/* Modal Dialog for Certificate Scans */}
-      <CertificateModal 
-        certificate={selectedCert}
-        onClose={() => setSelectedCert(null)}
-      />
-
-      {/* Modal Dialog for Interactive ATS Curriculum Vitae */}
-      <CvModal 
-        isOpen={isCvModalOpen}
-        onClose={() => setIsCvModalOpen(false)}
-      />
-    </div>
+      <EvidenceModal ref={evidenceRef} evidence={evidence} />
+      <CvModal ref={cvRef} opened={cvOpened} />
+    </Ui>
   );
-};
-
-export default App;
+}

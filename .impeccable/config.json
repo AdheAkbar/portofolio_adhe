@@ -1,0 +1,95 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "overused-font",
+        "value": "plus jakarta sans",
+        "createdAt": "2026-11-24T02:50:38.249Z",
+        "reason": "user brief section 6 names Plus Jakarta Sans for body and headings"
+      },
+      {
+        "rule": "broken-image",
+        "value": "*",
+        "files": [
+          "src/components/BappedaExperienceSection.tsx"
+        ],
+        "createdAt": "2026-11-24T03:47:19.666Z",
+        "reason": "false positive: Img component sets src in Img.tsx; verify-behavior.py asserts every image loads"
+      },
+      {
+        "rule": "broken-image",
+        "value": "*",
+        "files": [
+          "src/components/CertificateVaultSection.tsx"
+        ],
+        "createdAt": "2026-11-24T03:47:19.888Z",
+        "reason": "false positive: Img component sets src in Img.tsx; verify-behavior.py asserts every image loads"
+      },
+      {
+        "rule": "broken-image",
+        "value": "*",
+        "files": [
+          "src/components/CvOverviewSection.tsx"
+        ],
+        "createdAt": "2026-11-24T03:47:20.084Z",
+        "reason": "false positive: Img component sets src in Img.tsx; verify-behavior.py asserts every image loads"
+      },
+      {
+        "rule": "broken-image",
+        "value": "*",
+        "files": [
+          "src/components/EvidenceModal.tsx"
+        ],
+        "createdAt": "2026-11-24T03:47:20.266Z",
+        "reason": "false positive: Img component sets src in Img.tsx; verify-behavior.py asserts every image loads"
+      },
+      {
+        "rule": "broken-image",
+        "value": "*",
+        "files": [
+          "src/components/HeroSection.tsx"
+        ],
+        "createdAt": "2026-11-24T03:47:20.453Z",
+        "reason": "false positive: Img component sets src in Img.tsx; verify-behavior.py asserts every image loads"
+      },
+      {
+        "rule": "broken-image",
+        "value": "*",
+        "files": [
+          "src/components/PkmCaseStudiesSection.tsx"
+        ],
+        "createdAt": "2026-11-24T03:47:20.639Z",
+        "reason": "false positive: Img component sets src in Img.tsx; verify-behavior.py asserts every image loads"
+      },
+      {
+        "rule": "broken-image",
+        "value": "*",
+        "files": [
+          "src/components/ProfileSection.tsx"
+        ],
+        "createdAt": "2026-11-24T03:47:20.824Z",
+        "reason": "false positive: Img component sets src in Img.tsx; verify-behavior.py asserts every image loads"
+      },
+      {
+        "rule": "broken-image",
+        "value": "*",
+        "files": [
+          "src/components/PublicSpeakingBrandingSection.tsx"
+        ],
+        "createdAt": "2026-11-24T03:47:21.033Z",
+        "reason": "false positive: Img component sets src in Img.tsx; verify-behavior.py asserts every image loads"
+      },
+      {
+        "rule": "broken-image",
+        "value": "*",
+        "files": [
+          "src/lib/ui.tsx"
+        ],
+        "createdAt": "2026-11-24T03:47:21.236Z",
+        "reason": "false positive: Img component sets src in Img.tsx; verify-behavior.py asserts every image loads"
+      }
+    ]
+  }
+}

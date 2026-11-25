@@ -1,0 +1,9 @@
+# M. Adhe Akbar, S.Kom.
+
+> Portofolio Sarjana Informatika dari Bandar Lampung: pengembangan aplikasi, pengolahan data, administrasi, dukungan IT, dan publikasi.
+
+## Dokumen
+
+- [CV (PDF)](./assets/CV_M_Adhe_Akbar_ATS.pdf): riwayat pendidikan dan pengalaman
+- [Artikel penelitian](https://ejurnal.seminar-id.com/index.php/bits/article/view/9285): komparasi Naive Bayes dan KNN
+- [GitHub](https://github.com/AdheAkbar): kode sumber proyek

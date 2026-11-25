@@ -1,4 +1,3 @@
-1
 M. ADHE AKBAR
 Bandar Lampung, Lampung | +62 895-6365-71654 | akbarade496@gmail.com | linkedin.com/in/madheakbar |
 github.com/AdheAkbar
@@ -55,7 +54,6 @@ Menjalankan operasional NOC/FOC meliputi monitoring trafik jaringan, diagnosa ti
 Menangani technical support perangkat keras, perangkat lunak, penyambungan fiber optic splicing, dan jaringan LAN/WAN
 (MikroTik), termasuk pemeliharaan preventif dan koordinasi instalasi pelanggan.
 
-2
 PROGRAMMING PROJECTS & COMMUNITY SERVICE
 Proyek Unggulan GitHub (26 Repositori Publik) github.com/AdheAkbar
 6 Proyek Unggulan Pengembangan Web, Android, Pengolahan Data & Otomasi 2022 - 2026
@@ -88,7 +86,7 @@ Finalis Pemilihan Muli Mekhanai Kabupaten Pesawaran 2023 yang diselenggarakan Di
 produksi video promosi pariwisata di Hutan Mangrove Pesawaran dan Hotel Akar sebagai on-camera talent.
 Brand Ambassador Jaya Bakery 2023 (Seleksi Brand Ambassador Komersial) Bandar Lampung, Lampung
 Top 15 Finalist, Seleksi Brand Ambassador & Content Creator Mei 2023 - Juni 2023
-Finalis melalui uji tertulis dan wawancara; mengikuti workshop pembuatan konten influencer, photoshoot komersial, roadshow multi￾outlet, dan uji public speaking.
+Finalis melalui uji tertulis dan wawancara; mengikuti workshop pembuatan konten influencer, photoshoot komersial, roadshow multi-outlet, dan uji public speaking.
 SKILLS, CERTIFICATIONS & LANGUAGES
 Programming, Data & Administrative Skills: Analisis & Pengolahan Data (Python, TF-IDF, Naive Bayes, KNN, MS Excel), Review &
 Pembakuan SOP, Administrasi Perkantoran, Penyusunan Notulensi & Laporan Kegiatan, Web & Android Development (PHP MVC, Next.js,
