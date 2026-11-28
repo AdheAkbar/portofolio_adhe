@@ -1,92 +1,85 @@
 M. ADHE AKBAR, S.Kom.
-IT Support & Jaringan | Layanan Pelanggan & Public Speaking
+Content Creator & Humas | Public Speaking & On-Camera Talent | Latar Belakang IT
 Bandar Lampung, Lampung | WhatsApp: +62 895-6365-71654 | Email: akbarade496@gmail.com
 LinkedIn: linkedin.com/in/madheakbar | GitHub: github.com/AdheAkbar | Portofolio: portofolioadhe.vercel.app
 RINGKASAN
-Lulusan S1 Informatika (IPK 3,59, Cum Laude) berlatar belakang SMK Teknik Komputer dan Jaringan bersertifikat
-BNSP, serta penulis pertama artikel jurnal SINTA 3 tentang analisis sentimen 18.869 ulasan aplikasi dompet digital.
-Berpengalaman memasang dan menangani gangguan jaringan pelanggan di PT Sumatra Multimedia Solusi,
-perusahaan Internet Service Provider (ISP), serta menjadi IT support rapat di BAPPEDA Provinsi Lampung.
-Menyelesaikan lebih dari 4.500 pesanan pelanggan dengan rating 5,0, memvalidasi sekitar 4.000 data penerima
-bantuan, dan terbiasa tampil di depan umum sebagai Finalis Muli Mekhanai Kabupaten Pesawaran serta Top 15
-Brand Ambassador Jaya Bakery.
+Lulusan S1 Informatika (IPK 3,59, Cum Laude) dengan pengalaman humas di instansi pemerintah. Selama magang di
+BAPPEDA Provinsi Lampung, meliput rapat dan kegiatan dinas, lalu menulis, menyunting, dan mengunggah lebih
+dari 30 rilis dan konten di Instagram @bappeda_lampungprov. Tampil sebagai talent sekaligus editor di video
+promosi aplikasi Lampung-In (lebih dari 6.000 tayangan), video pariwisata Pesawaran bersama sponsor Hotel Akar,
+dan konten Jaya Bakery. Kemampuan menulis teruji lewat artikel jurnal terbit SINTA 3, dan latar belakang IT
+membantu mempercepat produksi, dari naskah sampai video berbasis kode dengan Remotion.
 PENDIDIKAN
 Universitas Teknokrat Indonesia – S1 Informatika (S.Kom.), IPK 3,59/4,00, Cum Laude Sep 2022 – Jul 2026
 SMK Negeri 1 Bandar Lampung – Teknik Komputer dan Jaringan (TKJ) Jul 2019 – Jun 2022
-PENGALAMAN IT
+PENGALAMAN KONTEN & HUMAS
 BAPPEDA Provinsi Lampung Bandar Lampung
 Magang Administrasi TI, Humas & Konten Digital Jul 2025 – Sep 2025
-Menjadi IT support rapat dan menyiapkan perangkat (laptop, proyektor, audio) untuk acara besar.
-Mengelola surat masuk, menginput data ke Excel dan sistem internal, mencatat notulensi rapat lintas bidang,
-serta membantu memperbarui SOP.
-Menyusun ide konten dan naskah, menyunting sekitar 30 konten publikasi dengan CapCut dan Canva, serta
-tampil sebagai talent di reel PPID.
-PT Sumatra Multimedia Solusi (Internet Service Provider) Bandar Lampung
-Magang IT Support, NOC & FOC (Praktik Kerja Lapangan SMK) Jun 2021 – Okt 2021
-Memasang jaringan untuk 4–6 pelanggan per minggu bersama tim FOC: menarik kabel fiber optic, melakukan
-splicing, dan mengukur redaman dengan OPM/OTDR.
-Memantau trafik dan status koneksi pelanggan di NOC menggunakan Winbox (MikroTik), lalu membantu
-mendiagnosis gangguan link.
-Menangani troubleshooting hardware, software, dan LAN/WAN, serta merawat rak server secara berkala.
-PENGALAMAN LAYANAN & ADMINISTRASI DATA
+Menjadi talent sekaligus editor video kolaborasi BAPPEDA dan Lampung-In yang mempromosikan aplikasi
+Lampung-In dari sudut pandang mahasiswa, ditayangkan sebagai reel Instagram PPID BAPPEDA dan ditonton
+lebih dari 6.000 kali.
+Meliput rapat, kegiatan, dan acara dinas (foto, video, dan bahan materi), lalu menulis rilis dan naskah konten
+untuk Instagram @bappeda_lampungprov; total lebih dari 30 rilis dan konten.
+Menyunting foto dan video dengan CapCut dan Canva, membuat desain banner, serta mengunggah postingan
+baru dan memperbarui postingan lama.
+Menjadi IT support rapat, mengelola surat masuk, mencatat notulensi, dan membantu memperbarui SOP.
+PUBLIC SPEAKING & ON-CAMERA TALENT
+Seleksi Brand Ambassador & Content Creator Jaya Bakery Bandar Lampung
+Top 15 Finalis Mei 2023 – Jun 2023
+Lolos tes tertulis, wawancara, dan uji public speaking hingga 15 besar; mengikuti photoshoot komersial dan
+workshop pembuatan konten.
+Tampil saat roadshow ke gerai, menyapa pelanggan di stan promo, dan membuat konten promosi Jaya Bakery,
+termasuk konten untuk sponsor Probeauty.
+Pemilihan Muli Mekhanai Kabupaten Pesawaran Pesawaran
+Finalis 2023
+Finalis pemilihan duta pariwisata dan budaya yang diselenggarakan Dinas Pariwisata dan Ekonomi Kreatif
+Kabupaten Pesawaran.
+Membuat dan tampil sebagai talent di video promosi pariwisata Hutan Mangrove Pesawaran dan Hotel Akar,
+sponsor kegiatan.
+PENGALAMAN LAINNYA
 Lita Global (platform layanan digital interaktif) Daring
 Mitra Layanan Pelanggan (Freelance) Sep 2024 – Agu 2026
 Menyelesaikan lebih dari 4.500 pesanan pelanggan secara mandiri dengan rating 5,0 dari 4.892 ulasan.
-Berkomunikasi langsung dengan pelanggan dan menjaga standar layanan secara konsisten.
 Teman Baik Lampung Lampung
 Enumerator Data Lapangan & Staf Distribusi Okt 2023 – Jun 2024
-Memvalidasi sekitar 4.000 data penerima bantuan di Bandar Lampung, Lampung Selatan, dan Lampung Tengah
-lewat survei door-to-door dan aplikasi mobile.
-Berkoordinasi dengan tim lapangan agar bantuan tersalurkan tepat sasaran dan tepat waktu.
-KEAHLIAN
-IT Support & Jaringan: troubleshooting hardware dan software, instal ulang Windows, perbaikan laptop,
-LAN/WAN, MikroTik (Winbox), fiber optic (splicing, OPM, OTDR), monitoring NOC, penyiapan perangkat rapat
-Administrasi & Data: Microsoft Excel (input dan pengolahan data), Word, PowerPoint; pengelolaan surat masuk,
-validasi data, notulensi rapat, pembaruan SOP
-Pelayanan & Komunikasi: layanan pelanggan, public speaking, on-camera talent, penulisan naskah
-Pemrograman & Tools: PHP, JavaScript, React, Kotlin, Python, SQL, Git; Canva, CapCut; AI tools (Claude Code,
-ChatGPT, Hermes Agent)
-PROYEK APLIKASI
-Website Pencatatan Booking MUA (React, Express, Turso; website-mua.vercel.app): login admin, pencatatan
-booking dan paket makeup, pengingat otomatis H-3, H-1, dan H-0, dashboard pendapatan, serta ekspor laporan
-ke CSV/PDF. Juga dibuat versi Android (Kotlin, Room).
+Memvalidasi sekitar 4.000 data penerima bantuan di Bandar Lampung, Lampung Selatan, dan Lampung Tengah.
+PT Sumatra Multimedia Solusi (Internet Service Provider) Bandar Lampung
+Magang IT Support, NOC & FOC (Praktik Kerja Lapangan SMK) Jun 2021 – Okt 2021
+Memasang jaringan untuk 4–6 pelanggan per minggu dan memantau koneksi pelanggan di NOC dengan Winbox
+(MikroTik).
+PROYEK KONTEN & APLIKASI
+Video Promosi Produk (Remotion, React): menulis naskah, tampil sebagai talent, dan mengedit video vertikal
+1080×1920 untuk TikTok Shop dan Shopee Video, lengkap dengan subtitle, grafis animasi, dan mixing audio.
+Aplikasi Penyusun Naskah Video (React, TypeScript, Express, Firebase): mengubah link produk TikTok Shop atau
+Shopee menjadi naskah video siap rekam: riset fakta produk, pilihan hook, naskah per adegan dengan arahan
+aksi, teleprompter, dan caption; lolos 70 pengujian otomatis (Vitest).
+Otomasi Naskah Konten (Hermes Agent): alur kerja AI untuk menyusun naskah video promosi sehingga
+pembuatan konten lebih mudah.
+Website Pencatatan Booking MUA (React, Express, Turso; website-mua.vercel.app): pencatatan booking dan
+paket makeup, pengingat otomatis H-3, H-1, dan H-0, dashboard pendapatan, serta ekspor laporan ke CSV/PDF.
 Sistem Menu & Kasir Kafe (PHP, MySQL): pemesanan per meja, manajemen menu, pembayaran QRIS, cetak
 struk, dan riwayat pesanan.
-Adhebank (Kotlin, Jetpack Compose, MVVM, Room): aplikasi Android pencatatan pemasukan dan pengeluaran
-dengan pembaruan saldo otomatis di setiap transaksi.
-Portal Pelaporan Insiden CSIRT (PHP, MySQL, Firebase, reCAPTCHA): pelaporan insiden keamanan dengan
-enkripsi AES-256, verifikasi pelapor, dan dashboard admin untuk persetujuan laporan.
-Sistem Booking Meja Biliar (PHP, MySQL): status meja real-time, reservasi pelanggan, dan daftar tunggu.
-Affiliate Script Studio (React, TypeScript, Express, Firebase): pembuat naskah video TikTok Shop dan Shopee
-Video dengan validasi otomatis klaim produk; lolos 70 pengujian otomatis (Vitest).
-MagangHub Autofill (JavaScript, Chrome Extension MV3, PDF.js): ekstensi pengisi formulir profil magang dari
-sertifikat atau CV, termasuk dokumen hasil scan dengan model AI multimodal.
 Total 27 repositori publik di github.com/AdheAkbar.
+KEAHLIAN
+Public Speaking & Talent: berbicara di depan umum, on-camera talent, presentasi, roadshow dan interaksi
+langsung dengan pelanggan
+Konten & Humas: penulisan rilis dan naskah, peliputan kegiatan (foto dan video), pengelolaan postingan media
+sosial, desain banner, naskah video promosi
+Editing & Desain: CapCut, Canva, Remotion (video berbasis React); sertifikat kompetensi Desain Grafis
+IT & Tools: Microsoft Office, troubleshooting hardware dan software, jaringan (MikroTik), PHP, JavaScript, React,
+Kotlin, Python, SQL, Git; AI tools (Claude Code, ChatGPT, Hermes Agent)
 SERTIFIKASI & PELATIHAN
-Sertifikat Kompetensi BNSP KKNI Level II – Teknisi Jaringan dan Sistem Komputer, LSP SMKN 1 Bandar Lampung
-(Jun 2022).
-Sertifikat Kompetensi Jaringan Komputer dan Troubleshooting, LPBM Univ. Teknokrat Indonesia (Feb 2026).
 Sertifikat Kompetensi Desain Grafis, LPBM Univ. Teknokrat Indonesia (Jan 2026).
 Sertifikat Kompetensi Komputer Administrasi Perkantoran, LPBM Univ. Teknokrat Indonesia (Sep 2025).
+Sertifikat Kompetensi Jaringan Komputer dan Troubleshooting, LPBM Univ. Teknokrat Indonesia (Feb 2026).
 Pelatihan MikroTik, LPBM Univ. Teknokrat Indonesia (Mar – Apr 2025).
+Sertifikat Kompetensi BNSP KKNI Level II – Teknisi Jaringan dan Sistem Komputer, LSP SMKN 1 Bandar Lampung
+(Jun 2022).
 PRESTASI & PUBLIKASI
 Teknokrat Academic Expo 2025: Juara 1 Animasi 2D/3D (Kelompok Pemula), Juara 2 Machine Learning (Python),
 Juara 3 AR/VR.
-Penulis pertama, “Komparasi Algoritma Naive Bayes dan K-Nearest Neighbor untuk Analisis Sentimen Pengguna
-Dompet Digital pada Google Play Store”, Jurnal BITS Vol. 7 No. 4, Maret 2026 (SINTA 3), DOI
-10.47065/bits.v7i4.9285. Menganalisis 18.869 ulasan DANA, OVO, DOKU, dan LinkAja: Naive Bayes unggul
-dengan akurasi 88,5% (KNN 87,4%) dan AUC 0,924, perbedaannya signifikan menurut uji McNemar (p = 0,0045),
-dan proses prediksinya 129 kali lebih cepat.
-PUBLIC SPEAKING & REPRESENTASI
-Seleksi Brand Ambassador & Content Creator Jaya Bakery Bandar Lampung
-Top 15 Finalis Mei 2023 – Jun 2023
-Lolos tes tertulis dan wawancara hingga 15 besar, lalu mengikuti uji public speaking, photoshoot komersial,
-roadshow ke beberapa outlet, dan workshop pembuatan konten.
-Pemilihan Muli Mekhanai Kabupaten Pesawaran Pesawaran
-Finalis 2023
-Pemilihan duta pariwisata dan budaya yang diselenggarakan Dinas Pariwisata dan Ekonomi Kreatif Kabupaten
-Pesawaran.
-Tampil sebagai talent video promosi pariwisata di Hutan Mangrove Pesawaran dan Hotel Akar.
+Penulis pertama artikel “Komparasi Algoritma Naive Bayes dan K-Nearest Neighbor untuk Analisis Sentimen
+Pengguna Dompet Digital pada Google Play Store”, Jurnal BITS Vol. 7 No. 4, Maret 2026 (SINTA 3).
 PENGABDIAN MASYARAKAT
 Jelajah Quiz, PKM SD Negeri 2 Bumisari (Sep – Okt 2025): membuat game kuis edukasi 2D dengan Construct 3
 dan memfasilitasi sesi literasi digital untuk 60+ siswa kelas 4–6.
