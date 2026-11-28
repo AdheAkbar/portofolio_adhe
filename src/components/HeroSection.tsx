@@ -9,15 +9,15 @@ const PORTRAIT: Photo = {
 };
 
 const PROOFS = [
-  { href: '#sinta-3-research', key: '18.869', title: 'ulasan diteliti', text: 'Terbit di jurnal BITS, 2026' },
-  { href: '#github-showcase', key: 'Otomasi', title: 'Autofill MagangHub', text: 'Ekstensi pengisi formulir' },
-  { href: '#karya-affiliate', key: 'Naskah AI', title: 'Affiliate Script Studio', text: 'Naskah dari tautan produk' },
-  { href: '#karya-adhebank', key: 'Android', title: 'Adhebank', text: 'Aplikasi catatan keuangan' },
-  { href: '#pkm', key: '60+ siswa', title: 'Game Jelajah Quiz', text: 'Edukasi sekolah dasar' },
+  { href: '#bappeda-publikasi', key: '30 konten', title: 'Publikasi BAPPEDA', text: 'Ide, naskah, dan suntingan' },
+  { href: '#konten-video', key: 'Remotion', title: 'Video motion graphic', text: 'Intro dan konten pendek' },
+  { href: '#bappeda-talent', key: 'Talent', title: 'Reel PPID BAPPEDA', text: 'Tampil di depan kamera' },
+  { href: '#karya-affiliate', key: 'Naskah', title: 'Script Studio', text: 'Penyusun naskah video' },
   { href: '#kreatif-juara', key: 'Juara 1', title: 'Animasi 2D/3D', text: 'Karya tim, Expo 2025' },
-  { href: '#kreatif-juara', key: 'Juara 3', title: 'Teknokrat Portal AR', text: 'Karya tim, Expo 2025' },
   { href: '#branding', key: 'Finalis', title: 'Muli Mekhanai', text: 'Duta wisata Pesawaran' },
   { href: '#branding', key: 'Finalis', title: 'Brand Ambassador', text: 'Jaya Bakery 2023, 15 besar' },
+  { href: '#lita-global', key: '4.892', title: 'ulasan pelanggan', text: 'Rating 5,0 di Lita Global' },
+  { href: '#sinta-3-research', key: '18.869', title: 'ulasan diteliti', text: 'Terbit di jurnal BITS, 2026' },
   { href: '#pendidikan', key: '3,59', title: 'IPK, Cum Laude', text: 'S1 Informatika' },
 ];
 
@@ -35,12 +35,12 @@ export function HeroSection() {
               <span className="hero-line"><span>M. Adhe</span></span>
               <span className="hero-line"><span>Akbar, S.Kom.</span></span>
             </h1>
-            <p className="hero-claim">Menghubungkan <mark>data, sistem, dan komunikasi</mark> agar pekerjaan berjalan lebih terstruktur.</p>
+            <p className="hero-claim">Menyusun, memproduksi, dan menyebarkan <mark>konten informasi publik</mark> yang mudah dipahami.</p>
             <p className="hero-lead">
-              Sarjana Informatika Universitas Teknokrat Indonesia dengan pengalaman <b>pengembangan aplikasi, pengolahan data, administrasi, dukungan IT, dan publikasi</b>.
+              Pengalaman magang humas dan konten digital di BAPPEDA Provinsi Lampung: <b>menyusun ide dan naskah, menyunting konten publikasi, serta tampil sebagai talent</b>. Didukung latar belakang S1 Informatika.
             </p>
             <div className="hero-cta">
-              <a className="btn bg-sun text-ink hover:bg-white" href="#github-showcase">Lihat karya pilihan <ArrowDown size={18} aria-hidden="true" /></a>
+              <a className="btn bg-sun text-ink hover:bg-white" href="#konten-video">Lihat karya konten <ArrowDown size={18} aria-hidden="true" /></a>
               <a className="btn btn-ghost" href={asset('assets/CV_M_Adhe_Akbar_ATS.pdf')} download="CV_M_Adhe_Akbar_ATS.pdf"><Download size={18} aria-hidden="true" /> Unduh CV</a>
             </div>
           </div>

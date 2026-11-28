@@ -11,16 +11,17 @@ export const SECTIONS: SectionMeta[] = [
   { id: 'hero', nav: 'Beranda' },
   { id: 'profil', nav: 'Profil', main: true },
   { id: 'ringkasan', nav: 'Hasil', main: true },
-  { id: 'github-showcase', nav: 'Karya', main: true },
+  { id: 'konten-video', nav: 'Video', main: true },
+  { id: 'bappeda', nav: 'Humas', main: true },
+  { id: 'branding', nav: 'Komunikasi publik' },
+  { id: 'kreatif-juara', nav: 'Penghargaan' },
+  { id: 'lita-global', nav: 'Pelayanan pelanggan' },
+  { id: 'github-showcase', nav: 'Aplikasi', main: true },
   { id: 'sinta-3-research', nav: 'Penelitian' },
   { id: 'pkm', nav: 'Media pembelajaran' },
-  { id: 'bappeda', nav: 'Pengalaman', main: true },
-  { id: 'lita-global', nav: 'Pelayanan pelanggan' },
   { id: 'field-operations', nav: 'Operasional lapangan' },
   { id: 'hybrid-skillset', nav: 'Perangkat dan teknologi' },
   { id: 'pendidikan', nav: 'Pendidikan dan data diri' },
-  { id: 'kreatif-juara', nav: 'Penghargaan' },
-  { id: 'branding', nav: 'Komunikasi publik' },
   { id: 'sertifikat', nav: 'Sertifikat dan dokumen' },
   { id: 'cv-lengkap', nav: 'Riwayat dan CV', main: true },
   { id: 'kontak', nav: 'Kontak', main: true },
@@ -280,6 +281,14 @@ export const EXPERIENCES: Experience[] = [
 
 export const SKILL_GROUPS: { title: string; items: { tools: string; use: string }[]; href: string; link: string }[] = [
   {
+    title: 'Publikasi dan komunikasi', href: '#bappeda-publikasi', link: 'Lihat dokumentasi',
+    items: [
+      { tools: 'CapCut, Remotion', use: 'Penyuntingan video pendek dan takarir' },
+      { tools: 'Canva, Figma', use: 'Desain materi publikasi dan antarmuka' },
+      { tools: 'Penulisan naskah dan on-camera', use: 'Penyampaian informasi kepada publik' },
+    ],
+  },
+  {
     title: 'Pengembangan aplikasi dan pengolahan data', href: '#github-showcase', link: 'Lihat karya terkait',
     items: [
       { tools: 'JavaScript, Next.js, React, PHP', use: 'Pengembangan situs web dan ekstensi peramban' },
@@ -294,14 +303,6 @@ export const SKILL_GROUPS: { title: string; items: { tools: string; use: string 
       { tools: 'Microsoft Word, Excel, PowerPoint', use: 'Penyusunan SOP, notulensi, dan laporan' },
       { tools: 'MikroTik, OPM, OTDR', use: 'Konfigurasi jaringan dan identifikasi gangguan' },
       { tools: 'Aplikasi pendataan mobile', use: 'Pengumpulan data di lapangan' },
-    ],
-  },
-  {
-    title: 'Publikasi dan komunikasi', href: '#bappeda-publikasi', link: 'Lihat dokumentasi',
-    items: [
-      { tools: 'CapCut', use: 'Penyuntingan video' },
-      { tools: 'Canva, Figma', use: 'Desain materi publikasi dan antarmuka' },
-      { tools: 'Penulisan naskah dan on-camera', use: 'Penyampaian informasi kepada publik' },
     ],
   },
 ];

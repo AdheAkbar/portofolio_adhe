@@ -8,7 +8,7 @@ export function ContactLoopingSection() {
   const { state, copy } = useCopy();
   return (
     <>
-      <Section id="kontak" className="contact" title={<>Data, sistem, dan komunikasi <mark>dalam satu rangkaian karya</mark></>} lead="Penelitian, aplikasi, administrasi, dan publikasi pada halaman ini merangkum perjalanan saya dari Teknik Komputer dan Jaringan hingga Sarjana Informatika.">
+      <Section id="kontak" className="contact" title={<>Konten, publikasi, dan komunikasi <mark>dalam satu rangkaian karya</mark></>} lead="Video, publikasi instansi, peran di depan publik, dan karya digital pada halaman ini merangkum perjalanan saya dari Teknik Komputer dan Jaringan hingga Sarjana Informatika.">
         <div className="flex flex-wrap items-center gap-3">
           <a className="btn bg-sun text-ink hover:bg-white" href={`mailto:${CONTACT.email}`}><Mail size={18} aria-hidden="true" /> {CONTACT.email}</a>
           <a className="btn btn-ghost" href={CONTACT.whatsappUrl} target="_blank" rel="noreferrer"><MessageCircle size={18} aria-hidden="true" /> WhatsApp<span className="sr-only"> (tab baru)</span></a>

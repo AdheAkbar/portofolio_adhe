@@ -4,6 +4,17 @@ import { EvidenceButton, Section, idx } from '../lib/ui';
 
 const RESULTS: { title: string; text: string; items: [href: string, result: string, detail: string][]; photo: Evidence; crop: string }[] = [
   {
+    title: 'Konten, publikasi, dan komunikasi publik',
+    text: 'Penulisan naskah, penyuntingan konten, peran di depan kamera, dan pelayanan pelanggan.',
+    items: [
+      ['#konten-video', 'Remotion Edit', 'Intro tiga gaya dan konten pendek dengan takarir serta motion graphic'],
+      ['#bappeda-publikasi', 'Sekitar 30 konten publikasi', 'Ide, naskah, dan suntingan konten BAPPEDA Provinsi Lampung'],
+      ['#bappeda-talent', 'On-camera talent', 'Reel PPID BAPPEDA Provinsi Lampung'],
+      ['#lita-global', 'Rating pelanggan 5,0', 'Pada tiga layanan di Lita Global'],
+    ],
+    photo: EVIDENCE.bappedaReel, crop: '[&_img]:object-[50%_62%]',
+  },
+  {
     title: 'Pengembangan aplikasi dan pengolahan data',
     text: 'Aplikasi web, Android, dan alat otomasi, serta pengolahan data menjadi informasi yang terstruktur.',
     items: [
@@ -24,21 +35,11 @@ const RESULTS: { title: string; text: string; items: [href: string, result: stri
     ],
     photo: EVIDENCE.bappedaRapat, crop: '',
   },
-  {
-    title: 'Publikasi, komunikasi, dan pelayanan',
-    text: 'Penulisan naskah, penyuntingan konten, peran di depan kamera, dan pelayanan pelanggan.',
-    items: [
-      ['#bappeda-publikasi', 'Sekitar 30 konten publikasi', 'Konten kegiatan BAPPEDA Provinsi Lampung, termasuk 1 reel'],
-      ['#bappeda-talent', 'On-camera talent', 'Reel PPID BAPPEDA Provinsi Lampung'],
-      ['#lita-global', 'Rating pelanggan 5,0', 'Pada tiga layanan di Lita Global'],
-    ],
-    photo: EVIDENCE.bappedaReel, crop: '[&_img]:object-[50%_62%]',
-  },
 ];
 
 export function QuickSummarySection() {
   return (
-    <Section id="ringkasan" thread="kanan" title="Hasil dan karya utama" lead="Karya dan capaian dari tiga bidang pekerjaan yang saya tekuni.">
+    <Section id="ringkasan" thread="kanan" title="Hasil dan karya utama" lead="Karya dan capaian dari tiga bidang yang saya tekuni, dimulai dari konten dan publikasi.">
       <div id="peta-posisi">
         {RESULTS.map(({ title, text, items, photo, crop }) => (
           <div key={title} className="result" data-reveal>

@@ -121,7 +121,7 @@ def check_toc_keyboard(page):
     button.focus()
     page.keyboard.press('Enter')
     expect(page.locator('#daftar-isi')).to_be_visible()
-    assert page.locator('#daftar-isi a').count() == 16
+    assert page.locator('#daftar-isi a').count() == 17
     page.keyboard.press('Tab')
     assert page.evaluate('!!document.activeElement.closest("#daftar-isi")')
     page.keyboard.press('Escape')
@@ -131,7 +131,7 @@ def check_toc_keyboard(page):
 
 def check_results(page):
     links = page.locator('#peta-posisi li a')
-    assert links.count() == 10, links.count()
+    assert links.count() == 11, links.count()
     for link in links.all():
         assert page.locator(link.get_attribute('href')).count() == 1, link.get_attribute('href')
     expect(page.locator('#peta-posisi').get_by_role('button', name='Semua')).to_have_count(0)

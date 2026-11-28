@@ -15,12 +15,12 @@ export function BappedaExperienceSection() {
   const { e, note } = GALLERY[active];
 
   return (
-    <Section id="bappeda" split facts={[['Hasil', 'Sekitar 30 konten publikasi'], ['Tugas utama', 'Notulensi dan pembakuan SOP'], ['Periode', 'Juli–September 2025']]} title={<>Administrasi dan publikasi <mark>di BAPPEDA Provinsi Lampung</mark></>} lead="Magang administrasi IT, humas, dan konten digital pada Badan Perencanaan Pembangunan Daerah.">
+    <Section id="bappeda" split facts={[['Hasil', 'Sekitar 30 konten publikasi'], ['Alat', 'CapCut dan Canva'], ['Periode', 'Juli–September 2025']]} title={<>Humas dan konten digital <mark>di BAPPEDA Provinsi Lampung</mark></>} lead="Magang Administrasi TI, Humas, dan Konten Digital pada Badan Perencanaan Pembangunan Daerah: dari ide konten, naskah, dan penyuntingan hingga dokumentasi kegiatan.">
       <div className="grid items-start gap-x-[min(5rem,5vw)] gap-y-16 lg:grid-cols-12">
         <div className="sheet-host lg:col-span-5 lg:pt-6" data-reveal="sheet">
           <div className="sheet">
-            <h3>Administrasi dan SOP</h3>
-            <p className="mt-2 text-fog">Mendukung ketertiban administrasi dan kejelasan prosedur kerja.</p>
+            <h3>Administrasi dan dukungan rapat</h3>
+            <p className="mt-2 text-fog">Mengelola surat masuk, menyiapkan perangkat rapat, dan menjaga kejelasan prosedur kerja.</p>
             <ol className="steps mt-7">
               <li style={idx(0)}><p className="font-bold">Notulensi rapat</p><p className="text-fog">Mencatat hasil rapat lintas bidang secara terstruktur.</p></li>
               <li style={idx(1)}><p className="font-bold">Peninjauan SOP</p><p className="text-fog">Meninjau dokumen prosedur kerja internal beberapa bidang.</p></li>
@@ -31,7 +31,7 @@ export function BappedaExperienceSection() {
 
         <div id="bappeda-publikasi" className="lg:col-span-7" data-reveal>
           <h3>Publikasi dan dokumentasi</h3>
-          <p className="mt-2 max-w-[56ch] text-[1.125rem] text-[#3b4a63]">Menyunting <b className="text-ink">sekitar 30 konten publikasi</b>, meliputi berita acara, dokumentasi kegiatan, dan satu reel Instagram, serta menulis naskah kegiatan.</p>
+          <p className="mt-2 max-w-[56ch] text-[1.125rem] text-[#3b4a63]">Menyusun ide konten dan naskah, lalu menyunting <b className="text-ink">sekitar 30 konten publikasi</b> dengan CapCut dan Canva, meliputi berita kegiatan, dokumentasi acara, dan satu reel Instagram.</p>
           <figure className="mt-6">
             <div className="swap" key={e.id}>
               <EvidenceButton evidence={e} sizes="(min-width: 64rem) 44rem, 92vw" className={`aspect-[3/2] ${e.photo.width < 600 ? 'contain' : ''}`} />

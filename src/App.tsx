@@ -4,6 +4,7 @@ import { BappedaExperienceSection } from './components/BappedaExperienceSection'
 import { CertificateVaultSection } from './components/CertificateVaultSection';
 import { ContactLoopingSection } from './components/ContactLoopingSection';
 import { CvModal } from './components/CvModal';
+import { ContentVideoSection } from './components/ContentVideoSection';
 import { CvOverviewSection } from './components/CvOverviewSection';
 import { EducationSection } from './components/EducationSection';
 import { EvidenceModal } from './components/EvidenceModal';
@@ -51,16 +52,17 @@ export default function App() {
         {/* Tiap Suspense dihidrasi terpisah supaya thread utama tidak terkunci lama. */}
         <Suspense><ProfileSection /></Suspense>
         <Suspense><QuickSummarySection /></Suspense>
+        <Suspense><ContentVideoSection /></Suspense>
+        <Suspense><BappedaExperienceSection /></Suspense>
+        <Suspense><PublicSpeakingBrandingSection /></Suspense>
+        <Suspense><MultimediaExpoSection /></Suspense>
+        <Suspense><LitaGlobalSection /></Suspense>
         <Suspense><GithubShowcaseSection /></Suspense>
         <Suspense><SintaResearchSection /></Suspense>
         <Suspense><PkmCaseStudiesSection /></Suspense>
-        <Suspense><BappedaExperienceSection /></Suspense>
-        <Suspense><LitaGlobalSection /></Suspense>
         <Suspense><FieldOperationsSection /></Suspense>
         <Suspense><HybridSkillsetSection /></Suspense>
         <Suspense><EducationSection /></Suspense>
-        <Suspense><MultimediaExpoSection /></Suspense>
-        <Suspense><PublicSpeakingBrandingSection /></Suspense>
         <Suspense><CertificateVaultSection /></Suspense>
         <Suspense><CvOverviewSection /></Suspense>
         <Suspense><ContactLoopingSection /></Suspense>
