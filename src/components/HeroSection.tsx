@@ -11,11 +11,11 @@ const PORTRAIT: Photo = {
 const PROOFS = [
   { href: '#bappeda-publikasi', key: '30 konten', title: 'Publikasi BAPPEDA', text: 'Ide, naskah, dan suntingan' },
   { href: '#konten-video', key: 'Remotion', title: 'Video motion graphic', text: 'Intro dan konten pendek' },
-  { href: '#bappeda-talent', key: 'Talent', title: 'Reel PPID BAPPEDA', text: 'Tampil di depan kamera' },
+  { href: '#bappeda-talent', key: '6.000+', title: 'kali ditonton', text: 'Reel Lampung-In, talent dan editor' },
   { href: '#karya-affiliate', key: 'Naskah', title: 'Script Studio', text: 'Penyusun naskah video' },
   { href: '#kreatif-juara', key: 'Juara 1', title: 'Animasi 2D/3D', text: 'Karya tim, Expo 2025' },
   { href: '#branding', key: 'Finalis', title: 'Muli Mekhanai', text: 'Duta wisata Pesawaran' },
-  { href: '#branding', key: 'Finalis', title: 'Brand Ambassador', text: 'Jaya Bakery 2023, 15 besar' },
+  { href: '#branding', key: '4.000+', title: 'tayangan konten', text: 'Finalis Brand Ambassador Jaya Bakery' },
   { href: '#lita-global', key: '4.892', title: 'ulasan pelanggan', text: 'Rating 5,0 di Lita Global' },
   { href: '#sinta-3-research', key: '18.869', title: 'ulasan diteliti', text: 'Terbit di jurnal BITS, 2026' },
   { href: '#pendidikan', key: '3,59', title: 'IPK, Cum Laude', text: 'S1 Informatika' },

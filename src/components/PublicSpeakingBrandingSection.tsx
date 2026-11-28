@@ -25,7 +25,7 @@ export function PublicSpeakingBrandingSection() {
             </figure>
             <figure className="md:col-span-4">
               <EvidenceButton evidence={EVIDENCE.jaya} sizes="(min-width: 48rem) 26rem, 92vw" className="aspect-[3/4] [&_img]:object-[42%_50%]" />
-              <figcaption><b className="block text-[1.125rem] text-ink">Finalis 15 besar Jaya Bakery</b> Seleksi brand ambassador 2023 melalui wawancara, pemotretan, roadshow, dan uji public speaking.</figcaption>
+              <figcaption><b className="block text-[1.125rem] text-ink">Finalis 15 besar Jaya Bakery</b> Seleksi brand ambassador 2023 melalui wawancara, pemotretan, roadshow, dan uji public speaking. Konten promosi yang saya bintangi meraih <b className="text-ink">total 4.000+ tayangan</b>.</figcaption>
             </figure>
           </div>
         </div>

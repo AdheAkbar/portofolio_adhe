@@ -55,7 +55,7 @@ export const CLAIMS = {
   ekstensi: { text: 'Ekstensi Chrome pengisi formulir MagangHub', where: 'github-showcase', basis: 'Repositori Autofill_maganghub' },
   sop: { text: 'Review SOP dan notulensi rapat lintas bidang', where: 'bappeda', basis: 'CV, tanpa dokumen publik' },
   publikasi: { text: 'Sekitar 30 konten publikasi campuran, termasuk 1 reel', where: 'bappeda', basis: 'CV' },
-  talent: { text: 'On-camera talent reel PPID BAPPEDA', where: 'bappeda', basis: 'Tangkapan layar reel dan CV' },
+  talent: { text: 'Talent dan editor reel PPID BAPPEDA, 6.000+ tayangan', where: 'bappeda', basis: 'Tangkapan layar reel dan CV' },
   quiz: { text: 'Jelajah Quiz untuk 60+ siswa kelas 4–6', where: 'pkm', basis: 'CV' },
   lita: { text: 'Rating 5,0 pada tiga layanan', where: 'lita-global', basis: 'Tangkapan layar akun' },
   litaOrder: { text: 'Lebih dari 4.500 order', where: 'lita-global', basis: 'CV, tanpa dasbor order' },

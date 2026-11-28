@@ -9,7 +9,7 @@ const RESULTS: { title: string; text: string; items: [href: string, result: stri
     items: [
       ['#konten-video', 'Remotion Edit', 'Intro tiga gaya dan konten pendek dengan takarir serta motion graphic'],
       ['#bappeda-publikasi', 'Sekitar 30 konten publikasi', 'Ide, naskah, dan suntingan konten BAPPEDA Provinsi Lampung'],
-      ['#bappeda-talent', 'On-camera talent', 'Reel PPID BAPPEDA Provinsi Lampung'],
+      ['#bappeda-talent', '6.000+ kali ditonton', 'Reel Lampung-In di PPID BAPPEDA, sebagai talent dan editor'],
       ['#lita-global', 'Rating pelanggan 5,0', 'Pada tiga layanan di Lita Global'],
     ],
     photo: EVIDENCE.bappedaReel, crop: '[&_img]:object-[50%_62%]',

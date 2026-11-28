@@ -58,10 +58,11 @@ export function BappedaExperienceSection() {
         <div>
           <h3>On-camera talent <mark>reel PPID BAPPEDA</mark></h3>
           <p className="talent-role">Memerankan sudut pandang mahasiswa yang tidak mengikuti aksi demonstrasi pada saat demonstrasi berlangsung.</p>
-          <p className="mt-5 max-w-[52ch] text-[1.0625rem] text-[#d5e0f0]">Reel ini memperkenalkan <b className="text-white">Lampung-In</b> sebagai saluran penyampaian aspirasi kepada DPRD melalui ponsel.</p>
+          <p className="mt-5 max-w-[52ch] text-[1.0625rem] text-[#d5e0f0]">Reel ini memperkenalkan <b className="text-white">Lampung-In</b> sebagai saluran penyampaian aspirasi kepada DPRD melalui ponsel, dan sudah <b className="text-white">ditonton lebih dari 6.000 kali</b>.</p>
           <dl className="mt-7 grid gap-x-10 gap-y-4 sm:grid-cols-2">
-            <div><dt className="text-[#d5e0f0]">Peran</dt><dd className="text-[1.1875rem] font-bold">On-camera talent</dd></div>
+            <div><dt className="text-[#d5e0f0]">Peran</dt><dd className="text-[1.1875rem] font-bold">Talent dan editor</dd></div>
             <div><dt className="text-[#d5e0f0]">Publikasi</dt><dd className="text-[1.1875rem] font-bold">Reel akun ppid_bappedalpg</dd></div>
+            <div><dt className="text-[#d5e0f0]">Jangkauan</dt><dd className="text-[1.1875rem] font-bold">6.000+ tayangan</dd></div>
           </dl>
           <p className="mt-4"><EvidenceLink evidence={EVIDENCE.bappedaReel}>Lihat tangkapan layar</EvidenceLink></p>
         </div>
